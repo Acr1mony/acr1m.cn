@@ -1,0 +1,25 @@
+#header
+name: AC
+description: AC的物流分享
+favicon: /fav.png
+ga: ''
+
+#nav
+nav:
+    HOME: /
+    ARCHIVE: /archives/
+    # GALLERY:  /gallery/
+    # ABOUT: /about/
+
+#post
+excerpt_link: Read More
+
+
+#about me
+aboutMeImg: /about_me.jpg
+
+github: https://github.com/acr1mony
+
+#copyright
+themeLink: https://github.com/yiliashaw/hexo-theme-prince
+
