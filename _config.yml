@@ -4,16 +4,16 @@
 
 # Site
 title: Logiac/AC的物流分享
-subtitle: ''
-description: ''
-keywords:
+subtitle: AC的物流分享
+description: 物流学习笔记、建站记录与个人随笔。
+keywords: 物流,国际物流,建站,Hexo
 author: Acr1mony
-language: en
-timezone: ''
+language: zh-CN
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://acr1m.cn
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
