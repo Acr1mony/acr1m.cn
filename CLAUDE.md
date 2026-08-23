@@ -77,7 +77,7 @@ public/                     # 生成产物（gitignore，勿手改）
 
 ### 当前配置注意点
 
-- `url` 已设为 `https://acr1m.cn`（若实际域名不同需同步修改）。
+- `url` 已设为 `https://acr1mcn.netlify.app`（绑定自定义域名后需同步修改）。
 - 站点 `language: zh-CN`，与主题 `zh-CN.yml` 及中文正文一致。
 - `deploy.type` 为空；历史文章提到过 Netlify + GitHub + Cloudflare，但本仓库未包含对应 deploy 插件或工作流。
 - 主题 `favicon: /favicon.ico`，与 `themes/prince/source/favicon.ico` 一致。
