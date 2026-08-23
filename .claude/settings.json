@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "python - <<'PY'\nimport json, sys\n\ntext = sys.stdin.read().lower()\nmodified_markers = [\n    'edited', 'updated successfully', 'file has been updated', 'changed on disk',\n    'git add', 'git commit', 'git push', 'commit', 'push', '修改', '改动', '更新', '变更',\n    'hexo generate', 'npm run build', 'build', 'generate', 'source/_posts',\n    'themes/prince/layout', '.claude/settings', 'settings.json'\n]\nverified_markers = [\n    '测试通过', 'lint通过', 'typecheck通过', '功能验证通过', 'todo检查完成', '验证完成',\n    '全部通过', '已验证', 'tests passed', 'test passed', 'lint passed', 'typecheck passed',\n    'functional verification complete', 'functional verification passed',\n    'todo check complete', 'todo check passed', 'build succeeded', 'build success',\n    'generate succeeded', 'generate success', 'smoke test passed', 'verified', 'verification complete'\n]\n\nmodified = any(marker.lower() in text for marker in modified_markers)\nverified = any(marker.lower() in text for marker in verified_markers)\n\nif modified and not verified:\n    print(json.dumps({\n        'continue': False,\n        'stopReason': '请先补齐并说明本轮修改对应的测试、lint、typecheck、功能验证或 TODO 检查结果；如果已经完成，请在本轮写明验证结果后再结束。',\n        'systemMessage': '请先补齐并说明本轮修改对应的测试、lint、typecheck、功能验证或 TODO 检查结果；如果已经完成，请在本轮写明验证结果后再结束。'\n    }, ensure_ascii=False))\nPY"
+          }
+        ]
+      }
+    ]
+  }
+}

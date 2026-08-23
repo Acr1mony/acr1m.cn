@@ -3,6 +3,8 @@ nav.page-navigation
     .page-header-logo
       h1.prince-log
         a.home-link(href=url_for())=theme.name
+      if theme.description
+        p.log-desc= theme.description
     button.navbar-toggle(type="button" data-toggle="collapse" data-target=".main-nav-items")
       span.sr-only Toggle navigation
       span.icon-bar

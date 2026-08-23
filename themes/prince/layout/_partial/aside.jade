@@ -4,10 +4,6 @@ aside.sidebar.col-md-4.col-xs-12
     .about-me-image(style='background-image:url(' + url_for(theme.aboutMeImg || '/about_me.png') + ')')
     p.about-me-text= theme.description
 
-  //- .gallery.widget
-  //-   h3.aside-title GALLERY
-  //-   ul.instagram-pic
-
   .all-tags.widget
     h3.aside-title ALL TAGS
     .all-tags-box!= list_tags({show_count:false,style:null,separator:''})
@@ -15,4 +11,10 @@ aside.sidebar.col-md-4.col-xs-12
   .follow-me.widget
     h3.aside-title FOLLOW ME
     .follow-icons
-      a.github-link(href=theme.github target='_blank')
+      if theme.github
+        a.bilibili-link(href='https://space.bilibili.com/220797685' target='_blank' rel='noopener' aria-label='Bilibili' title='Bilibili')
+          i.fa.fa-play-circle(aria-hidden='true')
+        a.px500-link(href='https://500px.com.cn/ACPicture' target='_blank' rel='noopener' aria-label='500px' title='500px')
+          i.fa.fa-camera(aria-hidden='true')
+        a.github-link(href=theme.github target='_blank' rel='noopener' aria-label='GitHub' title='GitHub')
+          i.fa.fa-github(aria-hidden='true')

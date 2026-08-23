@@ -12,8 +12,11 @@
 
   var $ = a;
   $('.post-block p img').each(function () {
-    $(this).wrap('<a data-fancybox="images" href="' + this.src + '" data-caption=" ' + this.alt + '" class="fancybox"></a>');
-    $(this).attr('src', this.src + '?imageMogr2/thumbnail/300x300/gravity/North/crop/200x200');
+    var $img = $(this);
+    if ($img.parent('a[data-fancybox="images"]').length) {
+      return;
+    }
+    $img.wrap('<a data-fancybox="images" href="' + this.src + '" data-caption="' + (this.alt || '') + '" class="fancybox"></a>');
   });
 
   if ($.fancybox) {
@@ -95,17 +98,17 @@
 
 const postContainerEl = document.querySelector('.prince-container')
 
-// console.log(postContainerEl.getComputedStyle())
-
 setTocStyle = () => {
   const tocEl = document.querySelector('.prince-container .toc')
+  if (!tocEl || !postContainerEl) {
+    return
+  }
   const tocWidth = tocEl.getBoundingClientRect().width
-  const postWidth = document.querySelector('.prince-container').getBoundingClientRect().width
+  const postWidth = postContainerEl.getBoundingClientRect().width
   const bodyWidth = document.body.getBoundingClientRect().width
-  console.log('(bodyWidth - postWidth) / 2 < tocWidth', (bodyWidth - postWidth) / 2 < tocWidth, bodyWidth,  (bodyWidth - postWidth) / 2, tocWidth)
-  tocEl.style.left = `${(bodyWidth - postWidth) / 2 + postWidth + 20}px`
-  tocEl.style.visibility = (bodyWidth - postWidth) / 2 < tocWidth ? 'hidden' : 'visible'
-  
+  const availableSpace = (bodyWidth - postWidth) / 2
+  tocEl.style.left = `${(bodyWidth - postWidth) / 2 + postWidth + 24}px`
+  tocEl.style.visibility = availableSpace > tocWidth + 24 ? 'visible' : 'hidden'
 }
 
 
