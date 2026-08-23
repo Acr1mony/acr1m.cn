@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Hexo pretty URLs already end with trailing slash / index.html.
+# Keep SPA-style fallbacks off; this is a multi-page static site.
