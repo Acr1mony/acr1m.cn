@@ -3,7 +3,7 @@ extends _partial/layout.jade
 block container
   if page.title === 'about'
     h3.aside-title ABOUT ME
-    .about-me-image
+    .about-me-image(style='background-image:url(' + url_for(theme.aboutMeImg || '/about_me.png') + ')')
     .post
       article.post-block
         .post-entry.post-about!= page.content
