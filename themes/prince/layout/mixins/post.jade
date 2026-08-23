@@ -15,8 +15,8 @@ mixin posts()
       article.post-block
         +postPhotos(item)
         h2.post-title
-          -var title = item.title !== '' ? item.title:__('no title')
-          if item.link !== ''
+          -var title = item.title ? item.title : __('no title')
+          if item.link
             a.post-link(href=url_for(item.link) target='_blank')=title
           else
             a.post-link(href=url_for(item.path))=title
@@ -36,7 +36,7 @@ mixin post(page)
   .post
     article.post-block
       +postPhotos(page)
-      -var title = page.title !== '' ? page.title:__('no title')
+      -var title = page.title ? page.title : __('no title')
       h1.post-title
         != title
       +postInfo(page)
@@ -53,8 +53,8 @@ mixin postTagList()
       -item.tags.each(function(tag){
         if page.tag == tag.name
           .post-item
-            -var title = item.title !== '' ? item.title:__('no title')
-            if item.link !== ''
+            -var title = item.title ? item.title : __('no title')
+            if item.link
               a.post-item-link(href=url_for(item.link) target='_blank')
                 span.post-title.col-sm-9.col-xs-12=title
                 span.post-date.col-sm-3.col-xs-12=full_date(item.date,'MMM Do YYYY')
@@ -73,8 +73,8 @@ mixin postList()
     - var posts = site.posts.sort('date',-1)
     - posts.each(function(item){
       .post-item
-        -var title = item.title !== '' ? item.title:__('no title')
-        if item.link !== ''
+        -var title = item.title ? item.title : __('no title')
+        if item.link
           a.post-item-link(href=url_for(item.link) target='_blank')
             span.post-title.col-sm-9.col-xs-12=title
             span.post-date.col-sm-3.col-xs-12=full_date(item.date,'MMM Do YYYY')
