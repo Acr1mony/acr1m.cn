@@ -1,12 +1,9 @@
-extends _partial/layout.jade
+extends _partial/layout
 
 block container
+  header.section-header
+    p.section-kicker ARCHIVE
+    h1 文章归档
+    p 共 #{site.posts.length} 篇记录
   include mixins/post
   +postList()
-
-block aside
-  include _partial/aside
-
-block pagination
-  include mixins/paginator
-  +index()

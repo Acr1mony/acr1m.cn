@@ -1,5 +1,5 @@
 mixin postInfo(page)
-  .post-info= full_date(page.date,'MMM Do YYYY')
+  time.post-info(datetime=date_xml(page.date))= date(page.date, 'YYYY.MM.DD')
 
 mixin postPhotos(page)
   if page.photos && page.photos.length
@@ -8,41 +8,46 @@ mixin postPhotos(page)
         p
           img(src=url_for(photo))
 
+
 mixin posts()
   .articles
     - page.posts.each(function(item){
-      article.post-block(class=item.title === '重新起航' ? 'post-relaunch' : '')
+      article.post-block
         +postPhotos(item)
-        h2.post-title
-          -var title = item.title ? item.title : __('no title')
-          if item.link
-            a.post-link(href=url_for(item.link) target='_blank')=title
+        header.post-header
+          +postInfo(item)
+          h2.post-title
+            -var title = item.title || item.slug || __('no title')
+            if item.link
+              a.post-link(href=url_for(item.link) target='_blank' rel='noopener')=title
+            else
+              a.post-link(href=url_for(item.path))=title
+        .post-summary
+          if item.excerpt
+            != item.excerpt
           else
-            a.post-link(href=url_for(item.path))=title
-        +postInfo(item)
-        if item.excerpt
-          .post-entry!= item.excerpt
-        else
-          .post-entry
-            != item.content
-        .post-meta
-          a(href=url_for(item.path)).article-more= theme.excerpt_link
-          if (item.tags && item.tags.length >0)
-            .post-tags-box!= list_tags(item.tags,{show_count:false,style:null,separator:','})
+            - var summary = strip_html(item.content).replace(/\s+/g, ' ').trim()
+            p= summary.length > 180 ? summary.substring(0, 180) + '…' : summary
+        footer.post-meta
+          a.article-more(href=url_for(item.path))
+            span= theme.excerpt_link
+            i.fa.fa-long-arrow-right(aria-hidden='true')
+          if (item.tags && item.tags.length > 0)
+            .post-tags-box!= list_tags(item.tags,{show_count:false,style:null,separator:''})
     - })
 
 mixin post(page)
   .post
     article.post-block
       +postPhotos(page)
-      -var title = page.title ? page.title : __('no title')
-      h1.post-title
-        != title
-      +postInfo(page)
+      -var title = page.title || page.slug || __('no title')
+      header.article-header
+        +postInfo(page)
+        h1.post-title!= title
+        if (page.tags && page.tags.length > 0)
+          .post-tags-box!= list_tags(page.tags,{show_count:false,style:null,separator:''})
       .post-entry
         != page.content
-      if (page.tags && page.tags.length >0)
-        .post-tags-box!= list_tags(page.tags,{show_count:false,style:null,separator:','})
   !=toc(page.content, {list_number:false})
 
 mixin postTagList()
@@ -52,32 +57,35 @@ mixin postTagList()
       -item.tags.each(function(tag){
         if page.tag == tag.name
           .post-item
-            -var title = item.title ? item.title : __('no title')
+            -var title = item.title || item.slug || __('no title')
             if item.link
               a.post-item-link(href=url_for(item.link) target='_blank')
                 span.post-title.col-sm-9.col-xs-12=title
                 span.post-date.col-sm-3.col-xs-12=full_date(item.date,'MMM Do YYYY')
-              .postList-tags-box!= list_tags(item.tags,{show_count:false,style:null,separator:','})
+              .postList-tags-box!= list_tags(item.tags,{show_count:false,style:null,saperator:','})
             else
               a.post-item-link(href=url_for(item.path))
                 span.post-title.col-sm-9.col-xs-12=title
                 span.post-date.col-sm-3.col-xs-12=full_date(item.date,'MMM Do YYYY')
-              .postList-tags-box!= list_tags(item.tags,{show_count:false,style:null,separator:','})
+              .postList-tags-box!= list_tags(item.tags,{show_count:false,style:null,saperator:','})
       -})
     -})
 
+
 mixin postList()
-  .archive.col-md-8.col-xs-12
+  .archive
     - var posts = site.posts.sort('date',-1)
     - posts.each(function(item){
       .post-item
-        -var title = item.title ? item.title : __('no title')
+        -var title = item.title || item.slug || __('no title')
         if item.link
-          a.post-item-link(href=url_for(item.link) target='_blank')
-            span.post-title.col-sm-9.col-xs-12=title
-            span.post-date.col-sm-3.col-xs-12=full_date(item.date,'MMM Do YYYY')
+          a.post-item-link(href=url_for(item.link) target='_blank' rel='noopener')
+            time.post-date(datetime=date_xml(item.date))=date(item.date,'YYYY.MM.DD')
+            span.post-title=title
+            i.fa.fa-arrow-right(aria-hidden='true')
         else
           a.post-item-link(href=url_for(item.path))
-            span.post-title.col-sm-9.col-xs-12=title
-            span.post-date.col-sm-3.col-xs-12=full_date(item.date,'MMM Do YYYY')
+            time.post-date(datetime=date_xml(item.date))=date(item.date,'YYYY.MM.DD')
+            span.post-title=title
+            i.fa.fa-arrow-right(aria-hidden='true')
     -})

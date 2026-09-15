@@ -6,8 +6,8 @@ ga: ''
 
 #nav
 nav:
-    HOME: /
-    ARCHIVE: /archives/
+    首页: /
+    归档: /archives/
     # GALLERY:  /gallery/
     # ABOUT: /about/
 

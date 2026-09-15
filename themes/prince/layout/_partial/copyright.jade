@@ -1,4 +1,7 @@
 .copyright
-  p Crafted with love by&nbsp;Acr1mony&nbsp;|&nbsp;
-    a(href='https://hexo.io/' target='_blank' rel='noopener') Hexo
-    |  Theme by SHAW and edited by Acr1mony.
+  .footer-inner
+    p.footer-name= theme.name + ' · ' + theme.description
+    p.footer-meta
+      span= '© ' + date(new Date(), 'YYYY') + ' ' + config.author
+      span.separator /
+      a(href='https://hexo.io/' target='_blank' rel='noopener') 由 Hexo 驱动

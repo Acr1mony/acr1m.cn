@@ -1,7 +1,8 @@
 extends _partial/layout
 
 block container
-    include mixins/post
-    +postTagList()
-block aside
-    include _partial/aside
+  header.section-header
+    p.section-kicker TAG
+    h1= page.tag
+  include mixins/post
+  +postTagList()
