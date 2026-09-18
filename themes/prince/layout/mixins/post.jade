@@ -37,18 +37,19 @@ mixin posts()
     - })
 
 mixin post(page)
-  .post
-    article.post-block
-      +postPhotos(page)
-      -var title = page.title || page.slug || __('no title')
-      header.article-header
-        +postInfo(page)
-        h1.post-title!= title
-        if (page.tags && page.tags.length > 0)
-          .post-tags-box!= list_tags(page.tags,{show_count:false,style:null,separator:''})
-      .post-entry
-        != page.content
-  !=toc(page.content, {list_number:false})
+  .post-layout
+    .post
+      article.post-block
+        +postPhotos(page)
+        -var title = page.title || page.slug || __('no title')
+        header.article-header
+          +postInfo(page)
+          h1.post-title!= title
+          if (page.tags && page.tags.length > 0)
+            .post-tags-box!= list_tags(page.tags,{show_count:false,style:null,separator:''})
+        .post-entry
+          != page.content
+    !=toc(page.content, {list_number:false})
 
 mixin postTagList()
   .archive.col-md-8.col-xs-12

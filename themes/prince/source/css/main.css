@@ -338,6 +338,16 @@ ol {
   color: var(--forest);
 }
 
+.post-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.post-layout > .post,
+.post-layout > .toc {
+  grid-area: 1 / 1;
+}
+
 .post {
   width: min(100%, var(--reading-width));
   margin: 0 auto;
@@ -732,10 +742,9 @@ samp {
 }
 
 @media (min-width: 1800px) {
-  .post + .toc {
-    position: fixed;
+  .post-layout > .toc {
+    position: sticky;
     top: 112px;
-    left: calc(50% + 650px);
     display: block;
     overflow-y: auto;
     width: 190px;
@@ -744,6 +753,9 @@ samp {
     border-left: 1px solid var(--line);
     color: var(--muted);
     font-size: 12px;
+    align-self: start;
+    justify-self: end;
+    transform: translateX(220px);
   }
 
   .toc ol {
