@@ -8,7 +8,7 @@
   --accent-dark: #873621;
   --forest: #315b55;
   --content-width: 1240px;
-  --reading-width: 900px;
+  --reading-width: 1240px;
 }
 
 *,
@@ -355,7 +355,7 @@ ol {
 }
 
 .article-header .post-title {
-  max-width: 860px;
+  max-width: 1180px;
   margin-bottom: 18px;
   font-size: 40px;
   line-height: 1.32;
@@ -731,11 +731,11 @@ samp {
   color: var(--accent);
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 1800px) {
   .post + .toc {
     position: fixed;
     top: 112px;
-    left: calc(50% + 480px);
+    left: calc(50% + 650px);
     display: block;
     overflow-y: auto;
     width: 190px;
