@@ -1,5 +1,5 @@
 ---
-title: ALGS Interactive Replay 功能介绍
+title: ALGSInteractiveReplay
 date: 2026-08-24 15:00:00
 categories: APEX LEGENDS
 tags:
@@ -26,6 +26,10 @@ description: ALGS Interactive Replay的功能介绍，分析赛事具体信息�
 - 对照选手 POV 录像（VOD）做同步复盘
 
 覆盖范围通常包括 ALGS 主要赛事与赛区（Pro League、Playoffs 等，Year 3 起逐步完善）。对局结束后数据一般会较快上线。
+
+**入口:[Apexlegendsstatus ALGS](https://apexlegendsstatus.com/algs/)**
+
+目前进行到Pro Spilit 2，
 
 ---
 
