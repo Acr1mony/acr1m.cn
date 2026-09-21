@@ -31,7 +31,7 @@ mixin posts()
         footer.post-meta
           a.article-more(href=url_for(item.path))
             span= theme.excerpt_link
-            i.fa.fa-long-arrow-right(aria-hidden='true')
+            i.fas.fa-long-arrow-alt-right(aria-hidden='true')
           if (item.tags && item.tags.length > 0)
             .post-tags-box!= list_tags(item.tags,{show_count:false,style:null,separator:''})
     - })
@@ -83,10 +83,10 @@ mixin postList()
           a.post-item-link(href=url_for(item.link) target='_blank' rel='noopener')
             time.post-date(datetime=date_xml(item.date))=date(item.date,'YYYY.MM.DD')
             span.post-title=title
-            i.fa.fa-arrow-right(aria-hidden='true')
+            i.fas.fa-arrow-right(aria-hidden='true')
         else
           a.post-item-link(href=url_for(item.path))
             time.post-date(datetime=date_xml(item.date))=date(item.date,'YYYY.MM.DD')
             span.post-title=title
-            i.fa.fa-arrow-right(aria-hidden='true')
+            i.fas.fa-arrow-right(aria-hidden='true')
     -})

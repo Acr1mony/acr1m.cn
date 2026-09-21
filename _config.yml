@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: AC 的物流手记
-subtitle: 记录国际物流、技术实践与沿途思考
-description: 记录国际物流、技术实践与沿途思考
+title: AC 的小窝
+subtitle: 记录技术实践，沿途工作与思考
+description: 记录技术实践，沿途工作与思考
 keywords: APEXLEGENDS,AC,物流,随笔
 author: Acr1mony
 language: zh-CN
@@ -55,6 +55,8 @@ prismjs:
   preprocess: true
   line_number: true
   tab_replace: ''
+marked:
+  smartypants: false
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')

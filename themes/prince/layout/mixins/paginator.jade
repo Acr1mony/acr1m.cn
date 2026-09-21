@@ -4,12 +4,12 @@ mixin index()
   .paginator
     if page.prev
       .prev-wrap
-        i.fa.fa-long-arrow-left
+        i.fas.fa-long-arrow-alt-left
         a.prev-page(href=url_for(page.prev_link))!= __('Previous')
     if page.next
       .next-wrap
         a.next-page(href=url_for(page.next_link))!= __('Next')
-        i.fa.fa-long-arrow-right
+        i.fas.fa-long-arrow-alt-right
 mixin post()
   -var prev = page.prev ? page.prev.path : false;
   -var next = page.next ? page.next.path : false;
@@ -17,7 +17,7 @@ mixin post()
     if prev
       -var title = page.prev.title || page.prev.slug || "（无标题）"
       .prev-wrap
-        i.fa.fa-long-arrow-left
+        i.fas.fa-long-arrow-alt-left
         a.prev-post(href=url_for(prev))
           small 上一篇
           span!= title
@@ -27,4 +27,4 @@ mixin post()
         a.next-post(href=url_for(next))
           small 下一篇
           span!= title
-        i.fa.fa-long-arrow-right
+        i.fas.fa-long-arrow-alt-right
