@@ -3,6 +3,9 @@ name: AC
 description: 记录技术实践，沿途工作与思考
 favicon: /favicon.ico
 ga: ''
+homeImages:
+  - https://s41.ax1x.com/2026/09/21/pnQyTFe.jpg
+  - https://s41.ax1x.com/2026/09/21/pnQyIoD.jpg
 
 #nav
 nav:

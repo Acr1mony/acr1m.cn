@@ -21,6 +21,19 @@
     });
   }
 
+  var heroImage = document.querySelector('#home-hero-image');
+
+  if (heroImage) {
+    try {
+      var homeImages = JSON.parse(heroImage.getAttribute('data-images') || '[]');
+      if (homeImages.length > 1) {
+        var randomImage = homeImages[Math.floor(Math.random() * homeImages.length)];
+        heroImage.src = randomImage;
+      }
+    } catch (error) {
+      // Keep the configured first image when the data attribute is unavailable.
+    }
+  }
   if (window.jQuery && window.jQuery.fancybox) {
     window.jQuery('.post-entry p img').each(function () {
       var image = window.jQuery(this);
